@@ -1,0 +1,14 @@
+[package]
+name = "sigmaos-tools-ttfx"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "sigmaos_tools_ttfx"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ttfx"
+path = "src/main.rs"
+
+[dependencies]

@@ -1,0 +1,1 @@
+# SigmaOS-tools-ttfx\n\nSigmaOS ttfx - Terminal text animation effects engine\n

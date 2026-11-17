@@ -3,7 +3,7 @@ name = "SigmaOS-tools-ttfx"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "tools-ttfx component"
+description = "SigmaOS Tools ttfx - Terminal text animation effects (omacom/ttfx parity)"
 upstream = []
 
 [contract]

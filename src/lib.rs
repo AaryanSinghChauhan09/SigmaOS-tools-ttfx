@@ -1,3 +1,4 @@
+#![forbid(unsafe_code)]
 //! ttfx - Terminal text effects engine for SigmaOS
 
 #[derive(Debug, Clone, PartialEq)]
@@ -90,5 +91,41 @@ impl TextEffect {
 
     pub fn get_frame(&self, index: usize) -> Option<&str> {
         self.frames.get(index).map(|s| s.as_str())
+    }
+}
+
+
+#[cfg(test)]
+mod ttfx_extra_tests {
+    use super::*;
+
+    #[test]
+    fn test_ttfx_fade_in_effect_aaa() {
+        // Arrange
+        let config = EffectConfig::new(Effect::FadeIn, 50, false);
+        // Act
+        let effect = TextEffect::new("SIGMA", config);
+        // Assert
+        assert!(effect.frame_count() > 0);
+        assert!(effect.get_frame(999).is_none());
+    }
+
+    #[test]
+    fn test_ttfx_empty_text_effect_aaa() {
+        // Arrange
+        let config = EffectConfig::new(Effect::Typewriter, 100, false);
+        // Act
+        let effect = TextEffect::new("", config);
+        // Assert
+        assert_eq!(effect.frame_count(), 0);
+    }
+
+    #[test]
+    fn test_ttfx_repeat_flag_preservation_aaa() {
+        // Arrange & Act
+        let config = EffectConfig::new(Effect::Matrix, 25, true);
+        // Assert
+        assert!(config.repeat);
+        assert_eq!(config.speed_ms, 25);
     }
 }
